@@ -69,20 +69,19 @@ function App() {
     const handleUndo = ()=>{
         setNum((prev)=>prev===0?prev:prev-1);
         let n = final.length;
-        if(final[n-1] === names[num-1]){
-            console.log("not found")
-            setFinal(final.slice(0,n-1));
+        if(final[n-1][0] === names[num-1][0]){
+            let arr = final;
+            arr.pop()
+            setFinal(arr);
         }
-        console.log(final)
+        
     }
     const handlePresent = ()=>{
         setNum((prev)=>prev===names.length?prev:prev+1);
         setFinal((prev)=>[...prev,names[num]])
-        console.log([...final ,names[num]])
     }
     const handleAbsent = ()=>{
         setNum((prev)=>prev===names.length?prev:prev+1)
-        console.log(final)
     }
 
     const handleCopy = async () => {
