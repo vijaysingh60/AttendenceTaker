@@ -105,7 +105,7 @@ function App() {
 
         {/* Attendance Card */}
         <div className="bg-gray-200 rounded-lg shadow-lg w-full max-w-md p-6">
-            <h2 className="text-xl font-semibold text-center mb-6">{names.values[num]}</h2>
+            <h2 className="text-xl font-semibold text-center mb-6">{names[num][1]}</h2>
             
             {/* Attendance Buttons */}
             <div className="space-y-4">
