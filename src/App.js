@@ -68,7 +68,9 @@ function App() {
 
     const handleUndo = ()=>{
         setNum((prev)=>prev===0?prev:prev-1);
+        
         let n = final.length;
+        if(n === 0)return;
         if(final[n-1][0] === names[num-1][0]){
             let arr = final;
             arr.pop()
