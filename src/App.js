@@ -63,6 +63,7 @@ function App() {
     ['79', 'YUSUF AMJHERAWALA'],
     ['80', 'ZAHARA RANGWALA']
     ]
+    const [colorStyle,setColorStyle] = useState(0);
     const [num,setNum] = useState(0)
     const [final,setFinal] = useState([]);
 
@@ -79,11 +80,22 @@ function App() {
         
     }
     const handlePresent = ()=>{
-        setNum((prev)=>prev===names.length?prev:prev+1);
+        setColorStyle(1);
+        setTimeout(()=>{
+            setNum((prev)=>prev===names.length?prev:prev+1);
+            setColorStyle(0)
+        },400)
+        
         setFinal((prev)=>[...prev,names[num]])
     }
     const handleAbsent = ()=>{
-        setNum((prev)=>prev===names.length?prev:prev+1)
+        setColorStyle(2);
+
+        setTimeout(()=>{
+            setNum((prev)=>prev===names.length?prev:prev+1)
+            setColorStyle(0);
+        },400)
+        
     }
 
     const handleCopy = async () => {
@@ -106,7 +118,11 @@ function App() {
 
         {/* Attendance Card */}
         <div className="bg-gray-200 rounded-lg shadow-lg w-full max-w-md p-6">
-            <h2 className="text-xl font-semibold text-center mb-6">{names[num][1]}</h2>
+            <h2 className="text-xl font-semibold text-center mb-6 transition-all  duration-200 transform" 
+            style={{
+                color : colorStyle ===2 ?"red":colorStyle === 1?"darkGreen":"black",
+                transform : !colorStyle &&"translateY(4px)"
+            }}>{names[num][0] + " : " +names[num][1]}</h2>
             
             {/* Attendance Buttons */}
             <div className="space-y-4">
